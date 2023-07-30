@@ -1,0 +1,71 @@
+.pc786postCard {
+    height: 650px;
+    width: 450px;
+    margin: 20px 0;
+    padding: 16px;
+    border-bottom: 1px solid var(--ss-border-color);
+}
+
+.pc786postCardHeader {
+    display: flex;
+    align-items: center;
+    padding: 0px 10px;
+}
+
+.pc786postCardHeaderImage {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.pc786postCardHeaderImage:hover {
+    transform: scale(1.1);
+    transition: all 0.2s ease-in-out;
+}
+
+.pc786postCardHeaderName {
+    font-size: 14px;
+}
+
+.pc786postCardContent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 20px;
+}
+
+.pc786postCardImage {
+    height: 475px;
+    width: 400px;
+    border: 1px solid var(--ss-postImage-border);
+    cursor: pointer;
+}
+
+.pc786postCardInteractions {
+    padding: 0 5px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.pc786postCardLikes {
+    margin: 0 10px;
+}
+
+.pc786postCardDescription {
+    font-size: 14px;
+}
+
+@media screen and (max-width: 768px) {
+    .pc786postCard {
+        height: 625px;
+        width: 350px;
+    }
+
+    .pc786postCardImage {
+        height: 425px;
+        width: 350px;
+    }
+}

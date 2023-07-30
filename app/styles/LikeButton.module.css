@@ -1,0 +1,9 @@
+.lb786likeButton {
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.lb786likeButton:hover {
+    transform: scale(1.1);
+    transition: all 0.2s ease-in-out;
+}

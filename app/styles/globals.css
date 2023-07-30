@@ -1,0 +1,32 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+
+  /* Theme Independent Vars */
+  --ss-header-height: 64px;
+  --ss-border-color: gray;
+
+  /* Theme Dependent Vars */
+  --ss-background: rgb(255, 255, 255);
+  --ss-text: black;
+  --ss-postImage-border: rgb(0, 0, 0);
+
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ss-background: rgb(0, 0, 0);
+    --ss-text: white;
+    --ss-postImage-border: rgb(255, 255, 255);
+  }
+}
+
+body {
+  background-color: var(--ss-background);
+  color: var(--ss-text);
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
