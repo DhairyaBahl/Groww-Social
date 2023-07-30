@@ -2,7 +2,6 @@
 
 import PostCard from "./PostCard"
 import { useEffect, useState } from "react"
-import { cache } from "react"
 
 export default function NewsFeed(props: any) {
     const [posts, setPosts] = useState<any[]>([])

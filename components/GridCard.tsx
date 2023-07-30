@@ -1,6 +1,6 @@
 import Image from "next/image"
-import styles from "@/app/styles/GridCard.module.css"
-import LikeButton from "./LikeButton"
+import styles from "@/styles/GridCard.module.css"
+import LikeButton from "@/components/LikeButton"
 import { useState } from "react"
 
 export default function GridCard(props: any) {
@@ -26,6 +26,7 @@ export default function GridCard(props: any) {
                 width={props.post.width}
                 height={props.post.height}
                 className={styles.gc786gridCardImage}
+                loading="lazy"
             />
             <div className={styles.gc786gridCardDescDescription}>
                 {props.post.alt_description}

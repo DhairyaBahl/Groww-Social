@@ -1,10 +1,10 @@
 'use client'
 
-import styles from "@/app/styles/UserPage.module.css"
+import styles from "@/styles/UserPage.module.css"
 import Image from "next/image"
 import { useEffect, useState } from "react"
-import NewsFeedGrid from "@/app/components/NewsFeedGrid"
-import NewsFeed from '@/app/components/NewsFeed'
+import NewsFeedGrid from "@/components/NewsFeedGrid"
+import NewsFeed from '@/components/NewsFeed'
 
 export default function UserPage({ params } : { params: { username: string } }) {
     const username = params.username

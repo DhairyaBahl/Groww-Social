@@ -1,4 +1,4 @@
-import styles from "@/app/styles/LikeButton.module.css";
+import styles from "@/styles/LikeButton.module.css";
 
 export default function LikeButton(props: any) {
     const { 

@@ -1,7 +1,7 @@
 import Image from "next/image"
-import styles from "@/app/styles/PostCard.module.css"
+import styles from "@/styles/PostCard.module.css"
 import { useEffect, useRef, useState } from "react"
-import LikeButton from "./LikeButton";
+import LikeButton from "@/components/LikeButton"
 import Link from "next/link";
 
 const NEXT_PUBLIC_UNSPLASH_ACCESS_KEY = '6Vdw8-3ariO7u6aPjxLXzhykKl6eTVdYKdj2dKZXEKA'
@@ -81,6 +81,7 @@ export default function PostCard(props: any) {
                     height={400}
                     className={styles.pc786postCardImage}
                     onDoubleClick={handleLike}
+                    loading="lazy"
                 />
             </div>
             <div className={styles.pc786postCardInteractions}>

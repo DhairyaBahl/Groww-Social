@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import styles from '@/app/styles/NewsFeedGrid.module.css'
-import GridCard from "@/app/components/GridCard";
+import styles from '@/styles/NewsFeedGrid.module.css'
+import GridCard from "@/components/GridCard";
 
 export default function NewsFeedGrid(props: any) {
     const { username } = props

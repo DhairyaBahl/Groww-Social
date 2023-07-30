@@ -1,7 +1,7 @@
-import styles from '@/app/styles/Header.module.css';
+import styles from '@/styles/Header.module.css';
 import Image from 'next/image'
-import SeedlingLogo from '@/app/assets/SeedlingLogo.png'
-import ProfileIcon from '@/app/assets/ProfileIcon.png'
+import SeedlingLogo from '@/assets/SeedlingLogo.png'
+import ProfileIcon from '@/assets/ProfileIcon.png'
 import Link from 'next/link';
 
 export default function Header() {
