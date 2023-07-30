@@ -8,6 +8,9 @@ export function handleError(statusCode: number): Error {
         case 401:
             message = 'Oops! Unauthorized.';
             break;
+        case 403:
+            message = 'Oops! Forbidden.';
+            break;
         case 404:
             message = 'Oops! Resource not found.';
             break;

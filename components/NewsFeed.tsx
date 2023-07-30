@@ -9,10 +9,12 @@ export default function NewsFeed(props: any) {
     const [posts, setPosts] = useState<any[]>([])
     const [page, setPage] = useState<number>(1);
     const [errorMessage, setErrorMessage] = useState<string>('')
+    const [isLoading, setIsLoading] = useState<boolean>(true)
 
     const { username } = props
 
     async function getPosts(count: number) {
+        setIsLoading(true)
         let newPosts:any = localStorage.getItem('posts')
         if(!newPosts || Object.keys(newPosts).length === 0) {
             try {
@@ -20,6 +22,7 @@ export default function NewsFeed(props: any) {
                 localStorage.setItem('posts', JSON.stringify(newPosts))
             }
             catch({message}: any) {
+                setIsLoading(false)
                 setErrorMessage(message)
                 return;
             }
@@ -27,10 +30,12 @@ export default function NewsFeed(props: any) {
         else {
             newPosts = JSON.parse(newPosts)
         }
+        setIsLoading(false)
         setPosts([...posts, ...newPosts])
     }
 
     async function fetchPosts(username: string) {
+        setIsLoading(true)
         let newPosts:any = localStorage.getItem(username + '-posts')
         if(!newPosts) {
             try {
@@ -38,6 +43,7 @@ export default function NewsFeed(props: any) {
                 localStorage.setItem(username + '-posts', JSON.stringify(newPosts))
             }
             catch({message}: any) {
+                setIsLoading(false)
                 setErrorMessage(message)
                 return;
             }
@@ -46,6 +52,7 @@ export default function NewsFeed(props: any) {
             newPosts = JSON.parse(newPosts)
         }
         setPosts([...posts, ...newPosts])
+        setIsLoading(false)
     }
 
     useEffect(() => {
@@ -53,10 +60,9 @@ export default function NewsFeed(props: any) {
         else getPosts(10);
     }, [page])
 
-    if(!posts.length) {
-        if(errorMessage.length) return <Error message={errorMessage} />
-        else return <div>Loading...</div>
-    }
+    if(isLoading) return <div>Loading...</div>
+    else if(errorMessage.length) return <Error message={errorMessage} />
+    else if(!posts.length) return <div>No Posts</div>
     
     return (
         <div>

@@ -8,9 +8,11 @@ export default function NewsFeedGrid(props: any) {
     const { username } = props
     const [posts, setPosts] = useState<any[]>([]);
     const [errorMessage, setErrorMessage] = useState<string>('');
+    const [isLoading, setIsLoading] = useState<boolean>(true);
 
     // Error Handling Krni hai
     async function fetchPosts() {
+        setIsLoading(true);
         let userPosts:any = localStorage.getItem(username + '-posts');
         if(!userPosts) {
             try {
@@ -19,6 +21,7 @@ export default function NewsFeedGrid(props: any) {
             }
             catch({message}: any) {
                 setErrorMessage(message);
+                setIsLoading(false);
                 return;
             }
         }
@@ -26,15 +29,14 @@ export default function NewsFeedGrid(props: any) {
             userPosts = JSON.parse(userPosts);
         }
         setPosts(userPosts);
+        setIsLoading(false);
     }
 
     useEffect(() => { fetchPosts() }, [])
 
-    // Loading Spinner Daalna hai
-    if(!posts) {
-        if(errorMessage.length) return <Error message={errorMessage} />
-        else return <div>Loading...</div>
-    }
+    if(isLoading) return <div>Loading...</div>
+    else if(errorMessage.length) return <Error message={errorMessage} />
+    else if(!posts.length) return <div>No Posts</div>
 
     return (
         <div className={styles.nfg786newsFeedGrid}>

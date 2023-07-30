@@ -29,6 +29,15 @@
     color: var(--ss-text);
 }
 
+.h786profileLink {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+    color: var(--ss-text);
+}
+
 .cl786companyLogo {
     margin: 0 5px;
 }

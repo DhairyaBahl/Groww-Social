@@ -20,14 +20,16 @@ export default function Header() {
                     />
                 </Link>
             </div>
-            <Image 
-                src={ProfileIcon} 
-                alt="Profile Icon of Social Seedling"
-                className={styles.p786profileIcon} 
-                width={30}
-                height={30}
-                loading='eager'
-            />
+            <Link href="/user/navi_photography" className={styles.h786profileLink}>
+                <Image 
+                    src={ProfileIcon} 
+                    alt="Profile Icon of Social Seedling"
+                    className={styles.p786profileIcon} 
+                    width={30}
+                    height={30}
+                    loading='eager'
+                />
+            </Link>
         </div>
     );
 }

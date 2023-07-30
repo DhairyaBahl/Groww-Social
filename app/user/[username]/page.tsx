@@ -7,19 +7,30 @@ import NewsFeedGrid from "@/components/NewsFeedGrid"
 import NewsFeed from '@/components/NewsFeed'
 import { fetchUserDataAPI } from "@/api"
 import { handleBio } from "@/helpers"
+import Error from "@/components/Error"
 
 export default function UserPage({ params } : { params: { username: string } }) {
     const username = params.username
     const [userData, setUserData] = useState<any>(null);
     const [isGrid, setIsGrid] = useState<boolean>(true);
+    const [errorMessage, setErrorMessage] = useState<string>('');
+    const [isLoading, setIsLoading] = useState<boolean>(true);
 
     async function fetchUserData(username: string) {
+        setIsLoading(true)
         const userDataString: string | null = localStorage.getItem(username)
         let userData: any = null
 
         if(!userDataString) {
-            userData = await fetchUserDataAPI(username)
-            localStorage.setItem(username, JSON.stringify(userData))
+            try {
+                userData = await fetchUserDataAPI(username)
+                localStorage.setItem(username, JSON.stringify(userData))
+            }
+            catch({message}: any) {
+                setIsLoading(false)
+                setErrorMessage(message)
+                return;
+            }
         }
         else {
             userData = JSON.parse(userDataString)
@@ -27,11 +38,14 @@ export default function UserPage({ params } : { params: { username: string } }) 
 
         userData.bio = handleBio(userData.bio)
         setUserData(userData)
+        setIsLoading(false)
     }
 
     useEffect(() => { fetchUserData(username) }, [])
 
-    if(!userData) return <div>loading...</div>
+    if(isLoading) return <div>Loading...</div>
+    else if(errorMessage.length) return <Error message={errorMessage} />
+    else if(!userData || Object.keys(userData).length === 0) return <Error message="User not found" />
     
     return (
         <div className={styles.up786userPage}>
@@ -60,7 +74,6 @@ export default function UserPage({ params } : { params: { username: string } }) 
                             <span>following</span>
                         </div>
                     </div>
-                    {/* <div className={styles.up786userFullName}>{userData.name}</div> */}
                     <div className={styles.up786bioHeading}>Bio</div>
                     <div className={styles.up786userBio}>{userData.bio}</div>
                 </div>
