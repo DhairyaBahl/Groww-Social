@@ -37,8 +37,9 @@ export default function NewsFeed(props: any) {
                 newPosts = await fetchPostsAPI(username)
                 localStorage.setItem(username + '-posts', JSON.stringify(newPosts))
             }
-            catch(err) {
-                
+            catch({message}: any) {
+                setErrorMessage(message)
+                return;
             }
         }
         else {

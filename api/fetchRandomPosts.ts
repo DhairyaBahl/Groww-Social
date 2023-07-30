@@ -2,7 +2,6 @@ import { handleError } from "@/helpers";
 
 export async function fetchRandomPostsAPI(count = 10) {
     const NEXT_PUBLIC_UNSPLASH_ACCESS_KEY = process.env.NEXT_PUBLIC_UNSPLASH_ACCESS_KEY
-    // const NEXT_PUBLIC_UNSPLASH_ACCESS_KEY = 1;
     try {
         const response = await fetch(`https://api.unsplash.com/photos/random?client_id=${NEXT_PUBLIC_UNSPLASH_ACCESS_KEY}&count=${count}`, {
             headers: { 
