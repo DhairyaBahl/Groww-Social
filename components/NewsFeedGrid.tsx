@@ -13,7 +13,7 @@ export default function NewsFeedGrid(props: any) {
     async function fetchPosts() {
         let userPosts:any = localStorage.getItem(username + '-posts');
         if(!userPosts) {
-            userPosts = fetchPostsAPI(username);
+            userPosts = await fetchPostsAPI(username);
             localStorage.setItem(username + '-posts', JSON.stringify(userPosts));
         }
         else {

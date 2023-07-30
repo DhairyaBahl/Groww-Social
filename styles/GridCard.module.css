@@ -1,6 +1,6 @@
 .gc786gridCard {
     margin: 10px;
-    width: 48%;
+    width: 47%;
     border: 1px solid var(--ss-postImage-border);
 }
 
@@ -35,7 +35,7 @@
 
 @media screen and (max-width: 1024px) {
     .gc786gridCard {
-        width: 47%;
+        width: 46%;
     }
 }
 
