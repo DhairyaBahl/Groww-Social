@@ -4,9 +4,11 @@ import PostCard from "./PostCard"
 import { useEffect, useState } from "react"
 import { cache } from "react"
 
-export default function NewsFeed() {
+export default function NewsFeed(props: any) {
     const [posts, setPosts] = useState<any[]>([])
     const [page, setPage] = useState(1);
+
+    const { username } = props
 
     async function getPosts(count: number) {
         if(!localStorage.getItem('posts')) {
@@ -26,8 +28,23 @@ export default function NewsFeed() {
         setPosts([...posts, ...newPosts])
     }
 
+    async function fetchPosts(username: string) {
+        if(localStorage.getItem(username + '-posts') === null) {
+            console.log('cache miss')
+            const NEXT_PUBLIC_UNSPLASH_ACCESS_KEY = process.env.NEXT_PUBLIC_UNSPLASH_ACCESS_KEY;
+            const baseUrl = `https://api.unsplash.com/users/${username}/photos?client_id=${NEXT_PUBLIC_UNSPLASH_ACCESS_KEY}`
+            const response = await fetch(baseUrl)
+            const data = await response.json()
+            localStorage.setItem(username + '-posts', JSON.stringify(data))
+        }
+
+        const newPosts = JSON.parse(localStorage.getItem(username + '-posts') || '{}')
+        setPosts([...posts, ...newPosts])
+    }
+
     useEffect(() => {
-        getPosts(10);
+        if(username) fetchPosts(username)
+        else getPosts(10);
     }, [page])
 
     if(!posts.length) {

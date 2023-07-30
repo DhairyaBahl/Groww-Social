@@ -1,0 +1,115 @@
+.up786userPage {
+    width: 80vw;
+}
+
+.up786userInfo {
+    display: flex;
+    /* justify-content: start; */
+    align-items: flex-start;
+    width: 600px;
+    /* border: 1px solid #ccc; */
+    margin: 10px;
+    padding: 10px;
+    /* padding-top: 20px; */
+}
+
+.up786userAvatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-top: 10px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.up786userDetailsWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    min-width: 400px;
+
+}
+
+.up786userName {
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+.up786userDetails {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.up786userFullName {
+    font-size: 16px;
+    font-weight: 400;
+    margin: 10px 0;
+}
+
+.up786userPostCount, .up786userFollowersCount, .up786userFollowingCount {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.up786value {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.up786userBio, .up786bioHeading {
+    margin-bottom: 2px;
+    font-size: 14px;
+}
+
+.up786userPhotosFormat {
+    /* border: 1px solid red; */
+    margin: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.up786format {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--ss-postImage-border);
+    height: 30px;
+    width: 49%;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.up786formatEnabled {
+    font-weight: bold;
+    border-width: 2px;
+}
+
+@media (max-width: 640px) {
+    .up786userInfo {
+        width: 350px;
+    }
+
+    .up786userAvatar {
+        width: 60px;
+        height: 60px;
+    }
+
+    .up786userName {
+        font-size: 16px;
+    }
+
+    .up786userPostCount, .up786userFollowersCount, .up786userFollowingCount {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .up786userDetailsWrapper {
+        min-width: 250px;
+    }
+}

@@ -4,7 +4,8 @@ export default function LikeButton(props: any) {
     const { 
         isLiked, 
         dimensions, 
-        onClick 
+        onClick,
+        className
     } = props;
 
     return (
@@ -14,7 +15,7 @@ export default function LikeButton(props: any) {
             height={dimensions}
             fill={isLiked ? "red" : "currentColor"}
             viewBox="0 0 16 16"
-            className={styles.lb786likeButton}
+            className={`${styles.lb786likeButton} ${className}`}
             onClick={onClick}
         >
             <path 

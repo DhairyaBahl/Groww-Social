@@ -2,6 +2,7 @@ import Image from "next/image"
 import styles from "@/app/styles/PostCard.module.css"
 import { useEffect, useRef, useState } from "react"
 import LikeButton from "./LikeButton";
+import Link from "next/link";
 
 const NEXT_PUBLIC_UNSPLASH_ACCESS_KEY = '6Vdw8-3ariO7u6aPjxLXzhykKl6eTVdYKdj2dKZXEKA'
 
@@ -10,7 +11,7 @@ export default function PostCard(props: any) {
         id,
         alt_description,
         urls: { regular },
-        user: { name, profile_image: { medium }, id: user_id },
+        user: { name, profile_image: { medium }, id: user_id, username },
     } = props.post
 
     const {
@@ -61,14 +62,16 @@ export default function PostCard(props: any) {
     return (
         <div className={styles.pc786postCard} ref={postCardRef}>
             <div className={styles.pc786postCardHeader}>
-                <Image 
-                    src={medium}
-                    alt={name}
-                    width={40}
-                    height={40}
-                    className={styles.pc786postCardHeaderImage}
-                />
-                <div className={styles.pc786postCardHeaderName}> { name } </div>
+                <Link href={`/user/${username}`} className={styles.pc786postCardHeaderLink}>
+                    <Image 
+                        src={medium}
+                        alt={name}
+                        width={40}
+                        height={40}
+                        className={styles.pc786postCardHeaderImage}
+                    />
+                    <div className={styles.pc786postCardHeaderName}> { username } </div>
+                </Link>
             </div>
             <div className={styles.pc786postCardContent}>
                 <Image

@@ -1,15 +1,21 @@
 .pc786postCard {
     height: 650px;
-    width: 450px;
+    width: 80vw;
     margin: 20px 0;
     padding: 16px;
     border-bottom: 1px solid var(--ss-border-color);
 }
 
 .pc786postCardHeader {
+
+}
+
+.pc786postCardHeaderLink {
     display: flex;
     align-items: center;
     padding: 0px 10px;
+    text-decoration: none;
+    color: var(--ss-text);
 }
 
 .pc786postCardHeaderImage {
@@ -38,7 +44,8 @@
 
 .pc786postCardImage {
     height: 475px;
-    width: 400px;
+    /* width: 400px; */
+    width: 100%;
     border: 1px solid var(--ss-postImage-border);
     cursor: pointer;
 }
@@ -60,12 +67,12 @@
 
 @media screen and (max-width: 768px) {
     .pc786postCard {
-        height: 625px;
-        width: 350px;
+        /* height: 625px; */
+        /* width: 350px; */
     }
 
     .pc786postCardImage {
-        height: 425px;
-        width: 350px;
+        /* height: 425px;
+        width: 350px; */
     }
 }
