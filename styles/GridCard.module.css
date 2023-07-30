@@ -65,10 +65,14 @@
 
 @media screen and (max-width: 480px) {
     .gc786gridCard {
-        width: 44%;
+        width: 40%;
+    }
+
+    .gc786gridCardDescDescription {
+        height: 80px;
     }
 
     .gc786gridCardImage {
-        height: 200px;
+        height: 170px;
     }
 }

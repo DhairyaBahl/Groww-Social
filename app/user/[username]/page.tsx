@@ -5,40 +5,31 @@ import Image from "next/image"
 import { useEffect, useState } from "react"
 import NewsFeedGrid from "@/components/NewsFeedGrid"
 import NewsFeed from '@/components/NewsFeed'
+import { fetchUserDataAPI } from "@/api"
+import { handleBio } from "@/helpers"
 
 export default function UserPage({ params } : { params: { username: string } }) {
     const username = params.username
     const [userData, setUserData] = useState<any>(null);
     const [isGrid, setIsGrid] = useState<boolean>(true);
 
-    function handleData(data: any) {
-        if(data.bio) data.bio = data.bio.substr(1, data.bio.length - 1)
-        else data.bio = 'No bio'
-    }
-
     async function fetchUserData(username: string) {
-        if(localStorage.getItem(username) === null) {
-            console.log('cache miss')
-            const NEXT_PUBLIC_UNSPLASH_ACCESS_KEY = process.env.NEXT_PUBLIC_UNSPLASH_ACCESS_KEY;
-            const baseUrl = `https://api.unsplash.com/users/${username}?client_id=${NEXT_PUBLIC_UNSPLASH_ACCESS_KEY}`
-            const response = await fetch(baseUrl)
-            const data = await response.json()
-            localStorage.setItem(username, JSON.stringify(data))
+        const userDataString: string | null = localStorage.getItem(username)
+        let userData: any = null
+
+        if(!userDataString) {
+            userData = await fetchUserDataAPI(username)
+            localStorage.setItem(username, JSON.stringify(userData))
         }
         else {
-            console.log('cache hit')
+            userData = JSON.parse(userDataString)
         }
 
-        const userData = JSON.parse(localStorage.getItem(username) || '{}')
-        handleData(userData)
+        userData.bio = handleBio(userData.bio)
         setUserData(userData)
-        // console.log(userData)
-
     }
 
-    useEffect(() => {
-        fetchUserData(username);
-    }, [])
+    useEffect(() => { fetchUserData(username) }, [])
 
     if(!userData) return <div>loading...</div>
     
@@ -54,7 +45,7 @@ export default function UserPage({ params } : { params: { username: string } }) 
                     priority={true}
                 />
                 <div className={styles.up786userDetailsWrapper}>
-                    <div className={styles.up786userName}>{username}</div>
+                    <div className={styles.up786userName}>@{username}</div>
                     <div className={styles.up786userDetails}>
                         <div className={styles.up786userPostCount}>
                             <span className={styles.up786value}>{userData.total_photos}</span>
@@ -69,7 +60,7 @@ export default function UserPage({ params } : { params: { username: string } }) 
                             <span>following</span>
                         </div>
                     </div>
-                    <div className={styles.up786userFullName}>{userData.name}</div>
+                    {/* <div className={styles.up786userFullName}>{userData.name}</div> */}
                     <div className={styles.up786bioHeading}>Bio</div>
                     <div className={styles.up786userBio}>{userData.bio}</div>
                 </div>

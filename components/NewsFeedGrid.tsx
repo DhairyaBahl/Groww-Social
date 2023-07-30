@@ -1,29 +1,30 @@
 import { useState, useEffect } from "react";
 import styles from '@/styles/NewsFeedGrid.module.css'
 import GridCard from "@/components/GridCard";
+import { fetchPostsAPI } from "@/api/fetchPosts";
 
 export default function NewsFeedGrid(props: any) {
     const { username } = props
-    const [posts, setPosts] = useState<any>([]);
+    const [posts, setPosts] = useState<any[]>([]);
 
-    async function fetchPosts(username: string) {
-        if(localStorage.getItem(username + '-posts') === null) {
-            console.log('cache miss')
-            const NEXT_PUBLIC_UNSPLASH_ACCESS_KEY = process.env.NEXT_PUBLIC_UNSPLASH_ACCESS_KEY;
-            const baseUrl = `https://api.unsplash.com/users/${username}/photos?client_id=${NEXT_PUBLIC_UNSPLASH_ACCESS_KEY}`
-            const response = await fetch(baseUrl)
-            const data = await response.json()
-            localStorage.setItem(username + '-posts', JSON.stringify(data))
+    const [isError, setIsError] = useState<boolean>(false);
+
+    // Error Handling Krni hai
+    async function fetchPosts() {
+        let userPosts:any = localStorage.getItem(username + '-posts');
+        if(!userPosts) {
+            userPosts = fetchPostsAPI(username);
+            localStorage.setItem(username + '-posts', JSON.stringify(userPosts));
         }
-
-        const posts = JSON.parse(localStorage.getItem(username + '-posts') || '{}')
-        setPosts(posts)
+        else {
+            userPosts = JSON.parse(userPosts);
+        }
+        setPosts(userPosts);
     }
 
-    useEffect(() => {
-        fetchPosts(username);
-    }, [])
+    useEffect(() => { fetchPosts() }, [])
 
+    // Loading Spinner Daalna hai
     if(!posts) return <div>loading...</div>
 
     return (

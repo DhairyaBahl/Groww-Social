@@ -9,13 +9,14 @@ export default function Header() {
         <div className={styles.h786header}>
             <div className={styles.cn786companyName}>
                 <Link href="/" className={styles.h786companyNameLink}>
-                    Social Seedlings
+                    Groww Social
                     <Image 
                         src={SeedlingLogo} 
                         alt="Logo of Social Seedling"
                         className={styles.cl786companyLogo} 
                         width={40}
                         height={40}
+                        loading='eager'
                     />
                 </Link>
             </div>
@@ -25,6 +26,7 @@ export default function Header() {
                 className={styles.p786profileIcon} 
                 width={30}
                 height={30}
+                loading='eager'
             />
         </div>
     );
