@@ -1,0 +1,6 @@
+.Home786 {
+    display: flex;
+    justify-content: space-between;
+    /* border: 1px solid #dbdbdb; */
+    width: 60vw;
+}

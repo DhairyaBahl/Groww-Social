@@ -1,0 +1,51 @@
+.sp786container {
+    display: none;
+}
+
+@media (min-width: 1100px) {
+    .sp786container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        box-shadow: 0 2px 20px var(--ss-text);
+        -webkit-box-shadow: 0 2px 20px var(--ss-text);
+        -moz-box-shadow: 0 2px 20px var(--ss-text);
+        border-radius: 10px;
+        border: 1px solid gray;
+        padding: 10px;
+        height: fit-content;
+        margin-top: 30px;
+    }
+
+    .sp786title {
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom: 10px;
+        border-bottom: 1px solid gray;
+    }
+
+    .sp786profile {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        height: 50px;
+        margin: 10px 0;
+        width: 100%;
+        text-decoration: none;
+        color: inherit;
+        padding: 10px 30px 10px 5px;
+        /* border-bottom: 1px solid gray; */
+        cursor: pointer;
+    }
+
+    .sp786avatar {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        margin-right: 10px;
+    }
+
+    .sp786username {
+        font-size: 0.9rem;
+    }
+}
