@@ -19,7 +19,9 @@
     margin-right: 20px;
     cursor: pointer;
     box-shadow: 0 2px 20px var(--ss-text);
-    border: 1px solid var(--ss-postImage-border);
+    box-shadow: 0 2px 20px var(--ss-text);
+    -webkit-box-shadow: 0 2px 20px var(--ss-text);
+    -moz-box-shadow: 0 2px 20px var(--ss-text);
 }
 
 .up786userDetailsWrapper {

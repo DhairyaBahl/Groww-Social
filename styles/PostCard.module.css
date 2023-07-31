@@ -2,10 +2,13 @@
     margin: 10px;
     background-color: var(--ss-background);
     border-radius: 10px;
-    box-shadow: 0 2px 20px var(--ss-text);
     overflow: hidden;
     width: 300px;
     margin-top: 5vh;
+    /* box shadow */
+    box-shadow: 0 2px 20px var(--ss-text);
+    -webkit-box-shadow: 0 2px 20px var(--ss-text);
+    -moz-box-shadow: 0 2px 20px var(--ss-text);
 }
 
 .pc786postCardGrid {
@@ -13,6 +16,8 @@
     background-color: var(--ss-background);
     border-radius: 10px;
     box-shadow: 0 2px 20px var(--ss-text);
+    -webkit-box-shadow: 0 2px 20px var(--ss-text);
+    -moz-box-shadow: 0 2px 20px var(--ss-text);
     overflow: hidden;
     width: 300px;
     margin-top: 5vh;
