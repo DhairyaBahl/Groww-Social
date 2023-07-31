@@ -20,7 +20,7 @@ export default function Header() {
                     />
                 </Link>
             </div>
-            <Link href="/user/navi_photography" className={styles.h786profileLink}>
+            <Link href="/user/noob_dhairya" className={styles.h786profileLink}>
                 <Image 
                     src={ProfileIcon} 
                     alt="Profile Icon of Social Seedling"
