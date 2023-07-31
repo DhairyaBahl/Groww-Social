@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react"
 import LikeButton from "@/components/LikeButton"
 import Link from "next/link";
 import { handleDate, handleLike } from "@/helpers";
+import useNextBlurHash from 'use-next-blurhash'
 
 export default function PostCard(props: any) {
     const {
@@ -23,6 +24,9 @@ export default function PostCard(props: any) {
 
     const [isLiked, setIsLiked] = useState(props?.post?.liked_by_user);
     const [likes, setLikes] = useState(props?.post?.likes);
+
+    const [blurDataUrl] = useNextBlurHash(props?.post?.blur_hash);
+    console.log('blurDataUrl', blurDataUrl)
 
     useEffect(() => {
         if(!postCardRef.current) return
@@ -52,6 +56,8 @@ export default function PostCard(props: any) {
                 className={styles.pc786postCardGridHeaderImage}
                 height={parseInt(props.post.height, 10)}
                 width={parseInt(props.post.width, 10)}
+                placeholder="blur"
+                blurDataURL={blurDataUrl}
             />
         </Link>
     )
@@ -70,6 +76,8 @@ export default function PostCard(props: any) {
                     height={parseInt(props.post.height, 10)}
                     width={parseInt(props.post.width, 10)}
                     onDoubleClick={() => handleLike({isLiked, setIsLiked, setLikes})}
+                    placeholder="blur"
+                    blurDataURL={blurDataUrl}
                 />
             </div>
             <div className={styles.pc786postCardContent}>
