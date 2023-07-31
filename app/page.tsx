@@ -9,7 +9,7 @@ export default function Home() {
 	return (
 		<div className = {styles.Home786}>
 			<NewsFeed />
-			<SuggestedProfiles />
+			{/* <SuggestedProfiles /> */}
 		</div>
 	)
 }

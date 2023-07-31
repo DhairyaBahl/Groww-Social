@@ -21,12 +21,9 @@ export default function PostCard(props: any) {
     } = props
 
     const postCardRef = useRef(null);
-
     const [isLiked, setIsLiked] = useState(props?.post?.liked_by_user);
     const [likes, setLikes] = useState(props?.post?.likes);
-
     const [blurDataUrl] = useNextBlurHash(props?.post?.blur_hash);
-    console.log('blurDataUrl', blurDataUrl)
 
     useEffect(() => {
         if(!postCardRef.current) return
@@ -67,6 +64,22 @@ export default function PostCard(props: any) {
             className={`${styles.pc786postCard} ${isGrid && styles.pc786postCardGrid}`} 
             ref={postCardRef}
         >
+            <Link
+                href={`/user/${username}`}
+                className={styles.pc786postCardUser}>
+                <Image
+                    src = {small}
+                    alt = {name}
+                    loading="lazy"
+                    className={styles.pc786postCardUserImage}
+                    width={40}
+                    height={40}
+                />
+                <div className={styles.pc786postCardUserInfo}>
+                    <div className={styles.pc786postCardUserName}>{name}</div>
+                    <div className={styles.pc786postCardDate}>{handleDate(props.post.created_at)}</div>
+                </div>
+            </Link>
             <div className={styles.pc786postCardHeader}>
                 <Image
                     src = {regular}
@@ -79,34 +92,19 @@ export default function PostCard(props: any) {
                     placeholder="blur"
                     blurDataURL={blurDataUrl}
                 />
+                <div className={styles.pc786postCardDescription}>{alt_description}</div>
             </div>
             <div className={styles.pc786postCardContent}>
                 <div className={styles.pc786postCardInteractions}>
                     <LikeButton
                         isLiked={isLiked}
                         onClick={() => handleLike({isLiked, setIsLiked, setLikes})}
-                        dimensions={30}
+                        dimensions={20}
                         className={styles.pc786likeButton}
                     />
+                    <span className={styles.pc786value}>{`${10} Comments`}</span>
                     <span className={styles.pc786value}>{`${likes} likes`}</span>
                 </div>
-                <div className={styles.pc786postCardDescription}>{alt_description}</div>
-                <Link
-                    href={`/user/${username}`}
-                    className={styles.pc786postCardUser}>
-                    <Image
-                        src = {small}
-                        alt = {name}
-                        loading="lazy"
-                        className={styles.pc786postCardUserImage}
-                        width={40}
-                        height={40}
-                    />
-                    <div className={styles.pc786postCardUserInfo}>
-                        <div className={styles.pc786postCardUserName}>{name}</div>
-                        <div className={styles.pc786postCardDate}>{handleDate(props.post.created_at)}</div>
-                    </div>
-                </Link>
             </div>
         </div>        
     )
