@@ -4,7 +4,7 @@
 
 @media (min-width: 1100px) {
     .sp786container {
-        position: absolute;
+        position: fixed;
         right: 8vw;
         top: 16vh;
         width: 20vw;

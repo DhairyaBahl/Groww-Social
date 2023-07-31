@@ -5,6 +5,7 @@ import PostCard from "./PostCard"
 import { useEffect, useState } from "react"
 import Error from "./Error";
 import styles from "@/styles/NewsFeed.module.css"
+import { handleCache } from "@/helpers";
 
 export default function NewsFeed(props: any) {
     const [posts, setPosts] = useState<any[]>([])
@@ -16,20 +17,21 @@ export default function NewsFeed(props: any) {
 
     async function getPosts(count: number) {
         setIsLoading(true)
-        let newPosts:any = localStorage.getItem('posts')
+        let newPosts:any = handleCache().getCache('feedPosts');
         if(!newPosts || Object.keys(newPosts).length === 0) {
             try {
                 newPosts = await fetchRandomPostsAPI(count);
-                localStorage.setItem('posts', JSON.stringify(newPosts))
+                handleCache().setCache({
+                    key: 'posts',
+                    value: newPosts,
+                    expiration: 3600
+                });
             }
             catch({message}: any) {
                 setIsLoading(false)
                 setErrorMessage(message)
                 return;
             }
-        }
-        else {
-            newPosts = JSON.parse(newPosts)
         }
         setIsLoading(false)
         setPosts([...posts, ...newPosts])
@@ -37,20 +39,21 @@ export default function NewsFeed(props: any) {
 
     async function fetchPosts(username: string) {
         setIsLoading(true)
-        let newPosts:any = localStorage.getItem(username + '-posts')
-        if(!newPosts) {
+        let newPosts:any = handleCache().getCache(username + ':posts');
+        if(!newPosts || Object.keys(newPosts).length === 0) {
             try {
-                newPosts = await fetchPostsAPI(username)
-                localStorage.setItem(username + '-posts', JSON.stringify(newPosts))
+                newPosts = await fetchPostsAPI(username);
+                handleCache().setCache({
+                    key: username + ':posts',
+                    value: newPosts,
+                    expiration: 3600
+                });
             }
             catch({message}: any) {
                 setIsLoading(false)
                 setErrorMessage(message)
                 return;
             }
-        }
-        else {
-            newPosts = JSON.parse(newPosts)
         }
         setPosts([...posts, ...newPosts])
         setIsLoading(false)

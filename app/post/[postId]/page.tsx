@@ -3,6 +3,7 @@
 import { fetchPostByIDAPI } from "@/api";
 import Error from "@/components/Error";
 import PostCard from "@/components/PostCard";
+import { handleCache } from "@/helpers";
 import { useEffect, useState } from "react";
 
 export default function PostPage({ params } : { params: { postId: string } }) {
@@ -12,20 +13,21 @@ export default function PostPage({ params } : { params: { postId: string } }) {
 
     async function fetchPost() {
         setIsLoading(true);
-        let post = localStorage.getItem(params.postId);
+        let post = handleCache().getCache('post:' + params.postId);;
         if(!post) {
             try {
                 post = await fetchPostByIDAPI(params.postId);
-                localStorage.setItem(params.postId, JSON.stringify(post));
+                handleCache().setCache({
+                    key: 'post:' + params.postId,
+                    value: post,
+                    expiration: 3600
+                });
             }
             catch({message}: any) {
                 setErrorMessage(message);
                 setIsLoading(false);
                 return;
             }
-        }
-        else {
-            post = JSON.parse(post);
         }
         setPostData(post);
         setIsLoading(false);

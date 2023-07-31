@@ -4,6 +4,7 @@ import GridCard from "@/components/GridCard";
 import { fetchPostsAPI } from "@/api/fetchPosts";
 import Error from "./Error";
 import PostCard from "./PostCard";
+import { handleCache } from "@/helpers";
 
 export default function NewsFeedGrid(props: any) {
     const { username } = props
@@ -14,20 +15,21 @@ export default function NewsFeedGrid(props: any) {
 
     async function fetchPosts() {
         setIsLoading(true);
-        let userPosts:any = localStorage.getItem(username + '-posts');
+        let userPosts:any = handleCache().getCache(username + ':posts');
         if(!userPosts) {
             try {
                 userPosts = await fetchPostsAPI(username);
-                localStorage.setItem(username + '-posts', JSON.stringify(userPosts));
+                handleCache().setCache({
+                    key: username + ':posts',
+                    value: userPosts,
+                    expiration: 3600
+                });
             }
             catch({message}: any) {
                 setErrorMessage(message);
                 setIsLoading(false);
                 return;
             }
-        }
-        else {
-            userPosts = JSON.parse(userPosts);
         }
         setPosts([...posts, ...userPosts]);
         setIsLoading(false);

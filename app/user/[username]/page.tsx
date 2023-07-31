@@ -6,7 +6,7 @@ import { useEffect, useState } from "react"
 import NewsFeedGrid from "@/components/NewsFeedGrid"
 import NewsFeed from '@/components/NewsFeed'
 import { fetchUserDataAPI } from "@/api"
-import { handleBio } from "@/helpers"
+import { handleBio, handleCache } from "@/helpers"
 import Error from "@/components/Error"
 
 export default function UserPage({ params } : { params: { username: string } }) {
@@ -18,22 +18,22 @@ export default function UserPage({ params } : { params: { username: string } }) 
 
     async function fetchUserData(username: string) {
         setIsLoading(true)
-        const userDataString: string | null = localStorage.getItem(username)
-        let userData: any = null
+        let userData: any = handleCache().getCache('user:' + username);
 
-        if(!userDataString) {
+        if(!userData || Object.keys(userData).length === 0) {
             try {
                 userData = await fetchUserDataAPI(username)
-                localStorage.setItem(username, JSON.stringify(userData))
+                handleCache().setCache({
+                    key: 'user:' + username,
+                    value: userData,
+                    expiration: 3600
+                });
             }
             catch({message}: any) {
                 setIsLoading(false)
                 setErrorMessage(message)
                 return;
             }
-        }
-        else {
-            userData = JSON.parse(userDataString)
         }
 
         userData.bio = handleBio(userData.bio)
