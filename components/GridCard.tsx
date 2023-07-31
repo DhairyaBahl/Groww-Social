@@ -17,6 +17,8 @@ export default function GridCard(props: any) {
                 height={props.post.height}
                 className={styles.gc786gridCardImage}
                 loading="lazy"
+                placeholder="blur"
+                blurDataURL={props.post.blur_hash}
             />
             <div className={styles.gc786gridCardDescDescription}>
                 {

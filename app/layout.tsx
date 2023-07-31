@@ -7,8 +7,8 @@ import Main from '@/components/Main'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Social Feed',
-  description: 'News Feed of Social',
+  title: 'Groww Social',
+  description: 'Social media for Growing Photographers',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

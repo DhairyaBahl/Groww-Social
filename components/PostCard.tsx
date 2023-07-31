@@ -3,18 +3,20 @@ import styles from "@/styles/PostCard.module.css"
 import { useEffect, useRef, useState } from "react"
 import LikeButton from "@/components/LikeButton"
 import Link from "next/link";
-import { handleLike } from "@/helpers";
+import { handleDate, handleLike } from "@/helpers";
 
 export default function PostCard(props: any) {
     const {
         alt_description,
         urls: { regular },
         user: { name, profile_image: { small }, username },
+
     } = props.post
 
     const {
         isLast,
         onIntersect,
+        isGrid
     } = props
 
     const postCardRef = useRef(null);
@@ -34,44 +36,70 @@ export default function PostCard(props: any) {
         })
 
         observer.observe(postCardRef.current)
-    }, [isLast])
+    }, [isLast]);
+
+    if(isGrid)
+    return (
+        <Link
+            href={`/post/${props.post.id}`} 
+            className={styles.pc786postCardGrid} 
+            ref={postCardRef}
+        >
+            <Image
+                src = {regular}
+                alt = {alt_description}
+                loading="lazy"
+                className={styles.pc786postCardGridHeaderImage}
+                height={parseInt(props.post.height, 10)}
+                width={parseInt(props.post.width, 10)}
+            />
+        </Link>
+    )
 
     return (
-        <div className={styles.pc786postCard} ref={postCardRef}>
+        <div 
+            className={`${styles.pc786postCard} ${isGrid && styles.pc786postCardGrid}`} 
+            ref={postCardRef}
+        >
             <div className={styles.pc786postCardHeader}>
-                <Link href={`/user/${username}`} className={styles.pc786postCardHeaderLink}>
-                    <Image 
-                        src={small}
-                        alt={name}
-                        width={40}
-                        height={40}
-                        className={styles.pc786postCardHeaderImage}
-                    />
-                    <div className={styles.pc786postCardHeaderName}> { username } </div>
-                </Link>
+                <Image
+                    src = {regular}
+                    alt = {alt_description}
+                    loading="lazy"
+                    className={styles.pc786postCardHeaderImage}
+                    height={parseInt(props.post.height, 10)}
+                    width={parseInt(props.post.width, 10)}
+                    onDoubleClick={() => handleLike({isLiked, setIsLiked, setLikes})}
+                />
             </div>
             <div className={styles.pc786postCardContent}>
-                <Image
-                    src={regular}
-                    alt={alt_description}
-                    width={300}
-                    height={400}
-                    className={styles.pc786postCardImage}
-                    onDoubleClick={() => handleLike({isLiked, setIsLiked, setLikes})}
-                    loading="lazy"
-                />
+                <div className={styles.pc786postCardInteractions}>
+                    <LikeButton
+                        isLiked={isLiked}
+                        onClick={() => handleLike({isLiked, setIsLiked, setLikes})}
+                        dimensions={30}
+                        className={styles.pc786likeButton}
+                    />
+                    <span className={styles.pc786value}>{`${likes} likes`}</span>
+                </div>
+                <div className={styles.pc786postCardDescription}>{alt_description}</div>
+                <Link
+                    href={`/user/${username}`}
+                    className={styles.pc786postCardUser}>
+                    <Image
+                        src = {small}
+                        alt = {name}
+                        loading="lazy"
+                        className={styles.pc786postCardUserImage}
+                        width={40}
+                        height={40}
+                    />
+                    <div className={styles.pc786postCardUserInfo}>
+                        <div className={styles.pc786postCardUserName}>{name}</div>
+                        <div className={styles.pc786postCardDate}>{handleDate(props.post.created_at)}</div>
+                    </div>
+                </Link>
             </div>
-            <div className={styles.pc786postCardInteractions}>
-                <LikeButton 
-                    isLiked={isLiked} 
-                    dimensions={32}
-                    onClick={() => handleLike({isLiked, setIsLiked, setLikes})}
-                />
-                <span className={styles.pc786postCardLikes}> { likes } likes</span>
-            </div>
-            <div className={styles.pc786postCardDescription}>
-                { alt_description }
-            </div>
-        </div>
+        </div>        
     )
 }

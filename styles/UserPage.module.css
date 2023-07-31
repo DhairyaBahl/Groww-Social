@@ -18,6 +18,8 @@
     margin-top: 10px;
     margin-right: 20px;
     cursor: pointer;
+    box-shadow: 0 2px 20px var(--ss-text);
+    border: 1px solid var(--ss-postImage-border);
 }
 
 .up786userDetailsWrapper {

@@ -4,6 +4,7 @@ import { fetchPostsAPI, fetchRandomPostsAPI } from "@/api";
 import PostCard from "./PostCard"
 import { useEffect, useState } from "react"
 import Error from "./Error";
+import styles from "@/styles/NewsFeed.module.css"
 
 export default function NewsFeed(props: any) {
     const [posts, setPosts] = useState<any[]>([])
@@ -65,7 +66,7 @@ export default function NewsFeed(props: any) {
     else if(!posts.length) return <div>No Posts</div>
     
     return (
-        <div>
+        <div className={styles.nf786NewsFeed}>
         {posts.map((post: any, index:number) => (
             <PostCard 
                 key={index} 

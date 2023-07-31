@@ -1,62 +1,82 @@
 .pc786postCard {
-    height: 650px;
-    width: 80vw;
-    margin: 20px 0;
-    padding: 16px;
-    border-bottom: 1px solid var(--ss-border-color);
+    margin: 10px;
+    background-color: var(--ss-background);
+    border-radius: 10px;
+    box-shadow: 0 2px 20px var(--ss-text);
+    overflow: hidden;
+    width: 300px;
+    margin-top: 5vh;
 }
 
-.pc786postCardHeaderLink {
-    display: flex;
-    align-items: center;
-    padding: 0px 10px;
+.pc786postCardGrid {
+    margin: 10px;
+    background-color: var(--ss-background);
+    border-radius: 10px;
+    box-shadow: 0 2px 20px var(--ss-text);
+    overflow: hidden;
+    width: 300px;
+    margin-top: 5vh;
+    cursor: pointer;
     text-decoration: none;
     color: var(--ss-text);
 }
 
+.pc786postCardGridHeaderImage {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
 .pc786postCardHeaderImage {
-    height: 30px;
-    width: 30px;
-    border-radius: 50%;
-    margin-right: 10px;
-    cursor: pointer;
-}
-
-.pc786postCardHeaderImage:hover {
-    transform: scale(1.1);
-    transition: all 0.2s ease-in-out;
-}
-
-.pc786postCardHeaderName {
-    font-size: 14px;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
 }
 
 .pc786postCardContent {
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
-    padding: 20px 20px;
-}
-
-.pc786postCardImage {
-    height: 475px;
-    /* width: 400px; */
-    width: 100%;
-    border: 1px solid var(--ss-postImage-border);
-    cursor: pointer;
+    align-items: flex-start;
+    padding: 20px;
+    min-height: 250px;
 }
 
 .pc786postCardInteractions {
-    padding: 0 5px;
     display: flex;
-    align-items: center;
+    justify-content: space-between;
+    width: 100%;
     margin-bottom: 16px;
-}
-
-.pc786postCardLikes {
-    margin: 0 10px;
+    align-items: center;
 }
 
 .pc786postCardDescription {
+    font-size: 13px;
+    margin: 0 0 40px;
+}
+
+.pc786postCardUser {
+    display: flex;
+    margin-top: auto;
+    text-decoration: none;
+    color: var(--ss-text);
+}
+
+.pc786postCardUserImage {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.pc786postCardUserName {
     font-size: 14px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.pc786postCardDate {
+    font-size: 12px;
+    margin: 0;
+    color: #545d7a;
 }
