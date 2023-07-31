@@ -1,0 +1,16 @@
+.ts786ThemeSwitcher {
+    border-radius: 10px;
+    background: transparent;
+    cursor: pointer;
+    /* box-shadow: 0 2px 20px var(--ss-text);
+    -webkit-box-shadow: 0 2px 20px var(--ss-text);
+    -moz-box-shadow: 0 2px 20px var(--ss-text); */
+    border: none;
+    outline: none;
+}
+
+.ts786ThemeSwitcherIcon {
+    border-radius: 10px;
+    outline: none;
+    border: none;
+}

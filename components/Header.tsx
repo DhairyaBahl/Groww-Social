@@ -3,6 +3,7 @@ import Image from 'next/image'
 import SeedlingLogo from '@/assets/SeedlingLogo.png'
 import ProfileIcon from '@/assets/ProfileIcon.png'
 import Link from 'next/link';
+import ThemeSwitcher from './ThemeSwitcher';
 
 export default function Header() {
     return (
@@ -20,16 +21,19 @@ export default function Header() {
                     />
                 </Link>
             </div>
-            <Link href="/user/noob_dhairya" className={styles.h786profileLink}>
-                <Image 
-                    src={ProfileIcon} 
-                    alt="Profile Icon of Social Seedling"
-                    className={styles.p786profileIcon} 
-                    width={30}
-                    height={30}
-                    loading='eager'
-                />
-            </Link>
+            <div className={styles.h786handles}>
+                <ThemeSwitcher className={styles.h786themeSwitcher}/>
+                <Link href="/user/noob_dhairya" className={styles.h786profileLink}>
+                    <Image 
+                        src={ProfileIcon} 
+                        alt="Profile Icon of Social Seedling"
+                        className={styles.p786profileIcon} 
+                        width={30}
+                        height={30}
+                        loading='eager'
+                    />
+                </Link>
+            </div>
         </div>
     );
 }

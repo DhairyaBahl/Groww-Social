@@ -47,6 +47,16 @@
     cursor: pointer;
 }
 
+.h786handles {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.h786themeSwitcher {
+    margin-right: 20px;
+}
+
 .p786profileIcon:hover {
     transform: scale(1.05);
     transition: transform 0.2s ease;
