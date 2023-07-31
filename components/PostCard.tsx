@@ -12,23 +12,16 @@ export default function PostCard(props: any) {
         alt_description,
         urls: { regular },
         user: { name, profile_image: { small }, username },
-
     } = props.post
 
-    const {
-        isLast,
-        onIntersect,
-        isGrid
-    } = props
+    const { isLast, onIntersect, isGrid } = props
 
-    const postCardRef = useRef(null);
+    const ref = useRef(null);
     const [isLiked, setIsLiked] = useState(props?.post?.liked_by_user);
     const [likes, setLikes] = useState(props?.post?.likes);
-    // const [blurDataUrl] = useNextBlurHash(props?.post?.blur_hash);
-    const [isImageLoading, setIsImageLoading] = useState(true);
 
     useEffect(() => {
-        if(!postCardRef.current) return
+        if(!ref.current) return
 
         const observer = new IntersectionObserver(([entry]) => {
             if(entry.isIntersecting && isLast) {
@@ -38,49 +31,26 @@ export default function PostCard(props: any) {
             }
         })
 
-        observer.observe(postCardRef.current)
+        observer.observe(ref.current)
     }, [isLast]);
-
-    console.log(isImageLoading)
 
     if(isGrid)
     return (
-        <Link
-            href={`/post/${props.post.id}`} 
-            className={styles.pc786postCardGrid} 
-            ref={postCardRef}
-        >
+        <Link href={`/post/${props.post.id}`} className={styles.pc786postCardGrid} ref={ref}>
             <Image
                 src = {regular}
                 alt = {alt_description}
-                loading="lazy"
                 className={`
                     ${styles.pc786postCardGridHeaderImage}` 
-                    + (isImageLoading ? ` ${styles.pc786postCardImageLoading}` : '')
                 }
                 height={parseInt(props.post.height, 10)}
                 width={parseInt(props.post.width, 10)}
-                onLoadingComplete={() => setIsImageLoading(false)}
-            />
-            <Blurhash
-                hash={props?.post?.blur_hash}
-                height={parseInt(props.post.height, 10)}
-                width={parseInt(props.post.width, 10)}
-                className={`
-                    ${styles.pc786postCardBlurHash}`
-                }
             />
         </Link>
     )
-
     return (
-        <div 
-            className={`${styles.pc786postCard} ${isGrid && styles.pc786postCardGrid}`} 
-            ref={postCardRef}
-        >
-            <Link
-                href={`/user/${username}`}
-                className={styles.pc786postCardUser}>
+        <div className={`${styles.pc786postCard} ${isGrid && styles.pc786postCardGrid}`} ref={ref}>
+            <Link href={`/user/${username}`} className={styles.pc786postCardUser}>
                 <Image
                     src = {small}
                     alt = {name}
@@ -98,22 +68,17 @@ export default function PostCard(props: any) {
                     hash={props?.post?.blur_hash}
                     height={parseInt(props.post.height, 10)}
                     width={parseInt(props.post.width, 10)}
-                    className={`
-                        ${styles.pc786postCardBlurHash}`
-                    }
+                    className={`${styles.pc786postCardBlurHash}`}
                 />
                 <div className={styles.pc786postCardImageWrapper}>
                     <Image
                         src = {regular}
                         alt = {alt_description}
-                        className={`
-                            ${styles.pc786postCardHeaderImage}`
-                        }
+                        className={`${styles.pc786postCardHeaderImage}`}
                         height={parseInt(props.post.height, 10)}
                         width={parseInt(props.post.width, 10)}
                         onDoubleClick={() => handleLike({isLiked, setIsLiked, setLikes})}
-                        onLoadingComplete={() => setIsImageLoading(false)}
-                    />                
+                    />    
                     <div className={styles.pc786postCardDescription}>{alt_description}</div>
                 </div>
             </div>
