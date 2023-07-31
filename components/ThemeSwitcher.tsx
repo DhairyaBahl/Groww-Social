@@ -8,7 +8,7 @@ import Image from 'next/image';
 
 export default function ThemeSwitcher(props: any) {
     const ref = useRef<HTMLDivElement>(null);
-    const [isDark, setIsDark] = useState<boolean>(false);
+    const [isDark, setIsDark] = useState<boolean>(true);
 
     useEffect(() => {
         setIsDark(window.matchMedia('(prefers-color-scheme: dark)').matches);
