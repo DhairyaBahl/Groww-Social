@@ -5,6 +5,7 @@ import LikeButton from "@/components/LikeButton"
 import Link from "next/link";
 import { handleDate, handleLike } from "@/helpers";
 import useNextBlurHash from 'use-next-blurhash'
+import { Blurhash, BlurhashCanvas } from "react-blurhash";
 
 export default function PostCard(props: any) {
     const {
@@ -23,7 +24,8 @@ export default function PostCard(props: any) {
     const postCardRef = useRef(null);
     const [isLiked, setIsLiked] = useState(props?.post?.liked_by_user);
     const [likes, setLikes] = useState(props?.post?.likes);
-    const [blurDataUrl] = useNextBlurHash(props?.post?.blur_hash);
+    // const [blurDataUrl] = useNextBlurHash(props?.post?.blur_hash);
+    const [isImageLoading, setIsImageLoading] = useState(true);
 
     useEffect(() => {
         if(!postCardRef.current) return
@@ -39,6 +41,8 @@ export default function PostCard(props: any) {
         observer.observe(postCardRef.current)
     }, [isLast]);
 
+    console.log(isImageLoading)
+
     if(isGrid)
     return (
         <Link
@@ -50,11 +54,21 @@ export default function PostCard(props: any) {
                 src = {regular}
                 alt = {alt_description}
                 loading="lazy"
-                className={styles.pc786postCardGridHeaderImage}
+                className={`
+                    ${styles.pc786postCardGridHeaderImage}` 
+                    + (isImageLoading ? ` ${styles.pc786postCardImageLoading}` : '')
+                }
                 height={parseInt(props.post.height, 10)}
                 width={parseInt(props.post.width, 10)}
-                placeholder="blur"
-                blurDataURL={blurDataUrl}
+                onLoadingComplete={() => setIsImageLoading(false)}
+            />
+            <Blurhash
+                hash={props?.post?.blur_hash}
+                height={parseInt(props.post.height, 10)}
+                width={parseInt(props.post.width, 10)}
+                className={`
+                    ${styles.pc786postCardBlurHash}`
+                }
             />
         </Link>
     )
@@ -70,7 +84,6 @@ export default function PostCard(props: any) {
                 <Image
                     src = {small}
                     alt = {name}
-                    loading="lazy"
                     className={styles.pc786postCardUserImage}
                     width={40}
                     height={40}
@@ -81,18 +94,28 @@ export default function PostCard(props: any) {
                 </div>
             </Link>
             <div className={styles.pc786postCardHeader}>
-                <Image
-                    src = {regular}
-                    alt = {alt_description}
-                    loading="lazy"
-                    className={styles.pc786postCardHeaderImage}
+                <Blurhash
+                    hash={props?.post?.blur_hash}
                     height={parseInt(props.post.height, 10)}
                     width={parseInt(props.post.width, 10)}
-                    onDoubleClick={() => handleLike({isLiked, setIsLiked, setLikes})}
-                    placeholder="blur"
-                    blurDataURL={blurDataUrl}
+                    className={`
+                        ${styles.pc786postCardBlurHash}`
+                    }
                 />
-                <div className={styles.pc786postCardDescription}>{alt_description}</div>
+                <div className={styles.pc786postCardImageWrapper}>
+                    <Image
+                        src = {regular}
+                        alt = {alt_description}
+                        className={`
+                            ${styles.pc786postCardHeaderImage}`
+                        }
+                        height={parseInt(props.post.height, 10)}
+                        width={parseInt(props.post.width, 10)}
+                        onDoubleClick={() => handleLike({isLiked, setIsLiked, setLikes})}
+                        onLoadingComplete={() => setIsImageLoading(false)}
+                    />                
+                    <div className={styles.pc786postCardDescription}>{alt_description}</div>
+                </div>
             </div>
             <div className={styles.pc786postCardContent}>
                 <div className={styles.pc786postCardInteractions}>
