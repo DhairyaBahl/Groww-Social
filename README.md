@@ -45,7 +45,9 @@ Progressive Web App (PWA): The web application is converted into a PWA, allowing
 
 ### Technologies Used
 Frontend: JavaScript (TypeScript) and NextTS
+
 API: Unsplash API
+
 Styling: CSS Modules
 
 ## Usage
