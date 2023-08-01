@@ -1,6 +1,6 @@
 # Groww-Social Web Application
 
-Groww-Social is a web application designed to provide a social media experience with a focus on sharing photos. It allows users to view an infinite scrollable news feed of random photos, like and view details of each post, and explore user profiles with their uploaded images. The application is responsive for mobile devices and provides additional features such as like-on-double-click and dark/light mode. It also implements various optimizations such as lazy loading, Blurhash for image optimization, caching API responses, and converting the app to a Progressive Web App (PWA) for offline usage and easy installation.
+Groww-Social is a web application designed to provide a social media experience with a focus on sharing photos. It allows users to view an infinite scrollable news feed of random photos, like and view details of each post, and explore user profiles with their uploaded images. The application is responsive for mobile devices and provides additional features such as like-on-double-click and dark/light mode. It also implements various optimizations such as lazy loading, Blurhash for image optimization, caching API responses, and converting the app to a Progressive Web App (PWA) for easy installation.
 
 ## Features
 ### News Feed Section
