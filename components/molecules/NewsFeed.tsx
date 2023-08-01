@@ -7,7 +7,11 @@ import Error from "../atoms/Error";
 import styles from "@/styles/molecules/NewsFeed.module.css"
 import { handleCache } from "@/handlers";
 
-export default function NewsFeed(props: any) {
+interface NewsFeedProps {
+    username?: string
+}
+
+export default function NewsFeed(props: NewsFeedProps) {
     const [posts, setPosts] = useState<any[]>([])
     const [page, setPage] = useState<number>(1);
     const [errorMessage, setErrorMessage] = useState<string>('')
@@ -76,6 +80,7 @@ export default function NewsFeed(props: any) {
                 post={post}
                 isLast = {index === posts.length - 1}
                 onIntersect={() => setPage((page) => page + 1)}
+                comments = {post.likes + index}
             />
         ))}
         <Error message={errorMessage} />

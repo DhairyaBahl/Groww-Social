@@ -1,6 +1,13 @@
 import styles from "@/styles/atoms/LikeButton.module.css";
 
-export default function LikeButton(props: any) {
+interface LikeButtonProps {
+    isLiked: boolean,
+    dimensions: number,
+    onClick: () => void,
+    className?: string
+};
+
+export default function LikeButton(props: LikeButtonProps) {
     const { 
         isLiked, 
         dimensions, 

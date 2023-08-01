@@ -1,6 +1,10 @@
-import style from '@/styles/atoms/Error.module.css'
+import style from '@/styles/atoms/Error.module.css';
 
-export default function Error(props: any) {
+interface ErrorProps {
+    message: string
+}
+
+export default function Error(props: ErrorProps) {
     const { message } = props
     return (
         <div className={style.e786em}>{message}</div>

@@ -1,13 +1,16 @@
 'use client';
 
 import styles from '@/styles/atoms/ThemeSwitcher.module.css'
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Sun from '@/assets/sun.png'
 import Moon from '@/assets/moon.png'
 import Image from 'next/image';
 
-export default function ThemeSwitcher(props: any) {
-    const ref = useRef<HTMLDivElement>(null);
+interface ThemeSwitcherProps {
+    className?: string
+}
+
+export default function ThemeSwitcher(props: ThemeSwitcherProps) {
     const [isDark, setIsDark] = useState<boolean>(true);
 
     useEffect(() => {

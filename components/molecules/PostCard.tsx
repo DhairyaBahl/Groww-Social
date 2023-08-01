@@ -5,22 +5,31 @@ import LikeButton from "@/components/atoms/LikeButton"
 import Link from "next/link";
 import { handleDate, handleLike } from "@/handlers";
 import { Blurhash } from "react-blurhash";
+import IPost from "@/types/post";
 
-export default function PostCard(props: any) {
+interface PostCardProps {
+    post: IPost
+    isLast?: boolean
+    onIntersect?: () => void
+    isGrid?: boolean
+    comments?: number
+}
+
+export default function PostCard(props: PostCardProps) {
     const {
         alt_description,
         urls: { regular },
         user: { name, profile_image: { small }, username },
     } = props.post
 
-    const { isLast, onIntersect, isGrid } = props
+    const { isLast, onIntersect, isGrid, comments } = props
 
     const ref = useRef(null);
     const [isLiked, setIsLiked] = useState(props?.post?.liked_by_user);
     const [likes, setLikes] = useState(props?.post?.likes);
 
     useEffect(() => {
-        if(!ref.current) return
+        if(!ref.current || !isLast || !onIntersect) return
 
         const observer = new IntersectionObserver(([entry]) => {
             if(entry.isIntersecting && isLast) {
@@ -97,8 +106,8 @@ export default function PostCard(props: any) {
                         dimensions={20}
                         className={styles.pc786likeButton}
                     />
-                    <span className={styles.pc786value}>{`${10} Comments`}</span>
-                    <span className={styles.pc786value}>{`${likes} likes`}</span>
+                    <span className={styles.pc786value}>{`${comments} Comments`}</span>
+                    <span className={styles.pc786value}>{`${likes} Likes`}</span>
                 </div>
             </div>
         </div>        

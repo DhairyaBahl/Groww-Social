@@ -6,10 +6,18 @@ import PostCard from "@/components/molecules/PostCard";
 import { handleCache } from "@/handlers";
 import { useEffect, useState } from "react";
 
-export default function PostPage({ params } : { params: { postId: string } }) {
+interface PostPageProps {
+    params: {
+        postId: string
+    }
+}
+
+export default function PostPage(props: PostPageProps) {
     const [postData, setPostData] = useState<any>(null);
     const [errorMessage, setErrorMessage] = useState<string>('');
     const [isLoading, setIsLoading] = useState<boolean>(true);
+
+    const { params } = props;
 
     async function fetchPost() {
         setIsLoading(true);

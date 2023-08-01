@@ -5,7 +5,11 @@ import Error from "../atoms/Error";
 import PostCard from "./PostCard";
 import { handleCache } from "@/handlers";
 
-export default function NewsFeedGrid(props: any) {
+interface NewsFeedGridProps {
+    username: string
+}
+
+export default function NewsFeedGrid(props: NewsFeedGridProps) {
     const { username } = props
     const [posts, setPosts] = useState<any[]>([]);
     const [page, setPage] = useState<number>(1);

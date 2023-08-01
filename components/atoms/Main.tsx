@@ -1,6 +1,11 @@
 import styles from '@/styles/atoms/Main.module.css';
 
-export default function Main({ children }: { children: React.ReactNode }) {
+interface MainProps {
+    children: React.ReactNode
+}
+
+export default function Main(props: MainProps) {
+    const { children } = props;
     return (
         <div className={styles.m786main}>
             <div className={styles.m786mainContainer}>

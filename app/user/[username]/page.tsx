@@ -5,11 +5,18 @@ import Image from "next/image"
 import { useEffect, useState } from "react"
 import NewsFeedGrid from "@/components/molecules/NewsFeedGrid"
 import NewsFeed from '@/components/molecules/NewsFeed'
-import { fetchUserDataAPI } from "@/api"
-import { handleBio, handleCache } from "@/handlers"
-import Error from "@/components/atoms/Error"
+import { fetchUserDataAPI } from "@/api";
+import { handleBio, handleCache } from "@/handlers";
+import Error from "@/components/atoms/Error";
 
-export default function UserPage({ params } : { params: { username: string } }) {
+interface UserPageProps {
+    params: {
+        username: string
+    }
+}
+
+export default function UserPage(props: UserPageProps) {
+    const { params } = props;
     const username = params.username
     const [userData, setUserData] = useState<any>(null);
     const [isGrid, setIsGrid] = useState<boolean>(true);
