@@ -24,14 +24,13 @@ export default function NewsFeed(props: NewsFeedProps) {
     let page: number, setPage: any;
     let errorMessage: string, setErrorMessage: any;
     let isLoading: boolean, setIsLoading: any;
+    
+    [posts, setPosts] = useState<any[]>([]);
+    [page, setPage] = useState<number>(1);
+    [errorMessage, setErrorMessage] = useState<string>('');
+    [isLoading, setIsLoading] = useState<boolean>(true);
 
-    if(!props.isProfile) {
-        [posts, setPosts] = useState<any[]>([]);
-        [page, setPage] = useState<number>(1);
-        [errorMessage, setErrorMessage] = useState<string>('');
-        [isLoading, setIsLoading] = useState<boolean>(true);
-    }
-    else {
+    if(props.isProfile) {
         page = props.page;
         posts = props.posts;
         setPage = props.setPage;
