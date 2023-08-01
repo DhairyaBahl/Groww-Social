@@ -1,3 +1,6 @@
+/*
+    Centralized error handler which accepts a status code and returns an error message
+*/
 export function handleError(statusCode: number): Error {
     let message = 'Oops! Something went wrong.';
 

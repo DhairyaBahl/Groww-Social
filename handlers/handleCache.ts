@@ -1,3 +1,6 @@
+/*
+    This file contains the functions to handle the cache.
+*/
 export function handleCache() {
     const setCache = ({key, value, expiration}: any) => {
         const data = {

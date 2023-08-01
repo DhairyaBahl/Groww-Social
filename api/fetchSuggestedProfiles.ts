@@ -1,3 +1,6 @@
+/*
+    Serves as a mock API for fetching suggested profiles
+*/
 export function fetchSuggestedProfilesAPI() {
     const profiles = [
         {

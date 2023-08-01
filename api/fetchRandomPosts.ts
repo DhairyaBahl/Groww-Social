@@ -1,5 +1,7 @@
 import { handleError } from "@/handlers";
-
+/*
+    Fetches random posts from the Unsplash API for the home page
+*/
 export async function fetchRandomPostsAPI(count = 10) {
     const NEXT_PUBLIC_UNSPLASH_ACCESS_KEY = process.env.NEXT_PUBLIC_UNSPLASH_ACCESS_KEY
     try {

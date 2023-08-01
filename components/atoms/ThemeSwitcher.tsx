@@ -10,6 +10,10 @@ interface ThemeSwitcherProps {
     className?: string
 }
 
+/*
+    This atomic component is used to render a button which 
+    toggles between light and dark theme
+*/
 export default function ThemeSwitcher(props: ThemeSwitcherProps) {
     const [isDark, setIsDark] = useState<boolean>(true);
 

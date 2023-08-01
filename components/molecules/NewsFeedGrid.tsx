@@ -9,6 +9,9 @@ interface NewsFeedGridProps {
     username: string
 }
 
+/*
+    This component is used to render the grid of posts on the profile page
+*/
 export default function NewsFeedGrid(props: NewsFeedGridProps) {
     const { username } = props
     const [posts, setPosts] = useState<any[]>([]);

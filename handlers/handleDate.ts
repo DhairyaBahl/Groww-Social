@@ -1,5 +1,8 @@
-// convert 2023-06-28T23:52:35Z to x days ago or x hours ago or x minutes ago or x seconds ago
-
+/*
+    format1: 2023-06-28T23:52:35Z
+    format2: x days ago or x hours ago or x minutes ago or x seconds ago
+    This function converts date from format1 to format2.
+*/
 export const handleDate = (date: string) => {
     const currentDate = new Date();
     const postDate = new Date(date);

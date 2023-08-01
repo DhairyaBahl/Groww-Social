@@ -15,6 +15,11 @@ interface UserPageProps {
     }
 }
 
+/*
+    This Page is used to render individual user when user clicks on a user
+    It also renders the user's posts in grid and list view
+    User can toggle between grid and list view
+*/
 export default function UserPage(props: UserPageProps) {
     const { params } = props;
     const username = params.username

@@ -15,6 +15,10 @@ interface PostCardProps {
     comments?: number
 }
 
+/*
+    This molecule component is used to render a single post
+    All the posts on all the pages are rendered using this component
+*/
 export default function PostCard(props: PostCardProps) {
     const {
         alt_description,

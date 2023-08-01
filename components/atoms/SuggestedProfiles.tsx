@@ -3,6 +3,9 @@ import styles from '@/styles/atoms/SuggestedProfiles.module.css'
 import Image from 'next/image';
 import Link from 'next/link';
 
+/*
+    This atomic component is used to render suggested profiles on the home page
+*/
 export default function SuggestedProfiles() {
     const profiles = fetchSuggestedProfilesAPI();
 

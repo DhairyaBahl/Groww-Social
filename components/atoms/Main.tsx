@@ -4,6 +4,9 @@ interface MainProps {
     children: React.ReactNode
 }
 
+/*
+    This atomic component is used to render main container
+*/
 export default function Main(props: MainProps) {
     const { children } = props;
     return (

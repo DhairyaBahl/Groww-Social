@@ -1,5 +1,8 @@
 import { handleError } from "@/handlers";
 
+/*
+    Fetches user data from the Unsplash API by username
+*/
 export async function fetchUserDataAPI(username: string) {
     const NEXT_PUBLIC_UNSPLASH_ACCESS_KEY = process.env.NEXT_PUBLIC_UNSPLASH_ACCESS_KEY;
     try {

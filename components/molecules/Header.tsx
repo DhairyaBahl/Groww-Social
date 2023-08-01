@@ -5,6 +5,10 @@ import ProfileIcon from '@/assets/ProfileIcon.png'
 import Link from 'next/link';
 import ThemeSwitcher from '../atoms/ThemeSwitcher';
 
+/*
+    This molecule component is used to render header
+    which is common to all pages
+*/
 export default function Header() {
     return (
         <div className={styles.h786header}>

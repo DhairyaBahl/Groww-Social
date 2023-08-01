@@ -7,6 +7,9 @@ interface LikeButtonProps {
     className?: string
 };
 
+/*
+    This atomic component is used to render like button
+*/
 export default function LikeButton(props: LikeButtonProps) {
     const { 
         isLiked, 

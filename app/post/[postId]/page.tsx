@@ -12,6 +12,10 @@ interface PostPageProps {
     }
 }
 
+/*
+    This Page is used to render individual post when user clicks on a post
+    from the profile page in the grid view
+*/
 export default function PostPage(props: PostPageProps) {
     const [postData, setPostData] = useState<any>(null);
     const [errorMessage, setErrorMessage] = useState<string>('');

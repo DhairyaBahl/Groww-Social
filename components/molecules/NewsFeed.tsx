@@ -11,6 +11,9 @@ interface NewsFeedProps {
     username?: string
 }
 
+/*
+    This component is used to render the feed of posts on the home page
+*/
 export default function NewsFeed(props: NewsFeedProps) {
     const [posts, setPosts] = useState<any[]>([])
     const [page, setPage] = useState<number>(1);
