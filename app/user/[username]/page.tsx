@@ -8,6 +8,7 @@ import NewsFeed from '@/components/molecules/NewsFeed'
 import { fetchUserDataAPI } from "@/api";
 import { handleBio, handleCache } from "@/handlers";
 import Error from "@/components/atoms/Error";
+import ProfilePosts from "@/components/molecules/ProfilePosts"
 
 interface UserPageProps {
     params: {
@@ -100,8 +101,7 @@ export default function UserPage(props: UserPageProps) {
                     onClick={() => setIsGrid(false)}
                     >List</span>
             </div>
-            {isGrid && <NewsFeedGrid username = {username} />}
-            {!isGrid && <NewsFeed username = {username} />}
+            <ProfilePosts isGrid={isGrid} username={username} />
         </div>
     )
 }
