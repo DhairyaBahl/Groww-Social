@@ -36,15 +36,23 @@ export default function PostCard(props: any) {
     if(isGrid)
     return (
         <Link href={`/post/${props.post.id}`} className={styles.pc786postCardGrid} ref={ref}>
-            <Image
-                src = {regular}
-                alt = {alt_description}
-                className={`
-                    ${styles.pc786postCardGridHeaderImage}` 
-                }
+            <Blurhash
+                hash={props?.post?.blur_hash}
                 height={parseInt(props.post.height, 10)}
                 width={parseInt(props.post.width, 10)}
+                className={`${styles.pc786postCardBlurHash}`}
             />
+            <div className={styles.pc786postCardGridImageWrapper}>
+                <Image
+                    src = {regular}
+                    alt = {alt_description}
+                    className={`
+                        ${styles.pc786postCardGridHeaderImage}` 
+                    }
+                    height={parseInt(props.post.height, 10)}
+                    width={parseInt(props.post.width, 10)}
+                />
+            </div>
         </Link>
     )
     return (

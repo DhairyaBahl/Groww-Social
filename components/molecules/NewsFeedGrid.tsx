@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import styles from '@/styles/molecules/NewsFeedGrid.module.css'
-import GridCard from "@/components/molecules/GridCard";
+import styles from '@/styles/molecules/NewsFeedGrid.module.css';
 import { fetchPostsAPI } from "@/api/fetchPosts";
 import Error from "../atoms/Error";
 import PostCard from "./PostCard";
