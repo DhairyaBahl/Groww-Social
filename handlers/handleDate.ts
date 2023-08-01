@@ -13,20 +13,32 @@ export const handleDate = (date: string) => {
     const months = Math.floor(days / 30);
     const years = Math.floor(months / 12);
 
-    if (years > 0) {
-        return `${years} years ago`;
-    } else if (months > 0) {
-        return `${months} months ago`;
-    } else if (days > 0) {
-        return `${days} days ago`;
-    } else if (hours > 0) {
-        return `${hours} hours ago`;
-    } else if (minutes > 0) {
-        return `${minutes} minutes ago`;
-    } else if (seconds > 0) {
-        return `${seconds} seconds ago`;
-    } else {
-        return 'just now';
-    }
+    const isPlural: boolean = (
+        years > 1 ||
+        months > 1 ||
+        days > 1 ||
+        hours > 1 ||
+        minutes > 1 ||
+        seconds > 1
+    )
 
+    if (years > 0) {
+        return `${years} year${isPlural ? 's' : ''} ago`;
+    }
+    if(months > 0) {
+        return `${months} month${isPlural ? 's' : ''} ago`;
+    }
+    if(days > 0) {
+        return `${days} day${isPlural ? 's' : ''} ago`;
+    }
+    if(hours > 0) {
+        return `${hours} hour${isPlural ? 's' : ''} ago`;
+    }
+    if(minutes > 0) {
+        return `${minutes} minute${isPlural ? 's' : ''} ago`;
+    }
+    if(seconds > 0) {
+        return `${seconds} second${isPlural ? 's' : ''} ago`;
+    }
+    return 'just now';
 };
