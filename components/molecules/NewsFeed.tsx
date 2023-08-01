@@ -8,11 +8,11 @@ import styles from "@/styles/molecules/NewsFeed.module.css"
 import { handleCache } from "@/handlers";
 
 interface NewsFeedProps {
-    posts: any[]
-    page: number
-    setPage: any
-    errorMessage: string
-    isLoading: boolean
+    posts?: any[]
+    page?: any
+    setPage?: any
+    errorMessage?: any
+    isLoading?: any
     isProfile?: boolean
 }
 
@@ -31,8 +31,8 @@ export default function NewsFeed(props: NewsFeedProps) {
     [isLoading, setIsLoading] = useState<boolean>(true);
 
     if(props.isProfile) {
-        page = props.page;
-        posts = props.posts;
+        page = props?.page;
+        posts = props?.posts;
         setPage = props.setPage;
         errorMessage = props.errorMessage;
         isLoading = props.isLoading;
