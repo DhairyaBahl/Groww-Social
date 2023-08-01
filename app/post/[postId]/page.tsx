@@ -1,9 +1,9 @@
 'use client';
 
 import { fetchPostByIDAPI } from "@/api";
-import Error from "@/components/Error";
-import PostCard from "@/components/PostCard";
-import { handleCache } from "@/helpers";
+import Error from "@/components/atoms/Error";
+import PostCard from "@/components/molecules/PostCard";
+import { handleCache } from "@/handlers";
 import { useEffect, useState } from "react";
 
 export default function PostPage({ params } : { params: { postId: string } }) {

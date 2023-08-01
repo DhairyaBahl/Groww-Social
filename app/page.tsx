@@ -1,6 +1,6 @@
-import styles from './page.module.css'
-import NewsFeed from '@/components/NewsFeed'
-import SuggestedProfiles from '@/components/SuggestedProfiles'
+import styles from '@/styles/pages/HomePage.module.css'
+import NewsFeed from '@/components/molecules/NewsFeed'
+import SuggestedProfiles from '@/components/atoms/SuggestedProfiles'
 
 export default function Home() {
 	return (

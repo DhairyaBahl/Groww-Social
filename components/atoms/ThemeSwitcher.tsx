@@ -1,6 +1,6 @@
 'use client';
 
-import styles from '@/styles/ThemeSwitcher.module.css'
+import styles from '@/styles/atoms/ThemeSwitcher.module.css'
 import { useEffect, useRef, useState } from 'react';
 import Sun from '@/assets/sun.png'
 import Moon from '@/assets/moon.png'

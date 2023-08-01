@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import styles from '@/styles/NewsFeedGrid.module.css'
-import GridCard from "@/components/GridCard";
+import styles from '@/styles/molecules/NewsFeedGrid.module.css'
+import GridCard from "@/components/molecules/GridCard";
 import { fetchPostsAPI } from "@/api/fetchPosts";
-import Error from "./Error";
+import Error from "../atoms/Error";
 import PostCard from "./PostCard";
-import { handleCache } from "@/helpers";
+import { handleCache } from "@/handlers";
 
 export default function NewsFeedGrid(props: any) {
     const { username } = props

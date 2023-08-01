@@ -1,4 +1,4 @@
-import style from '@/styles/Error.module.css'
+import style from '@/styles/atoms/Error.module.css'
 
 export default function Error(props: any) {
     const { message } = props

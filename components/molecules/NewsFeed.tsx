@@ -3,9 +3,9 @@
 import { fetchPostsAPI, fetchRandomPostsAPI } from "@/api";
 import PostCard from "./PostCard"
 import { useEffect, useState } from "react"
-import Error from "./Error";
-import styles from "@/styles/NewsFeed.module.css"
-import { handleCache } from "@/helpers";
+import Error from "../atoms/Error";
+import styles from "@/styles/molecules/NewsFeed.module.css"
+import { handleCache } from "@/handlers";
 
 export default function NewsFeed(props: any) {
     const [posts, setPosts] = useState<any[]>([])
@@ -22,7 +22,7 @@ export default function NewsFeed(props: any) {
             try {
                 newPosts = await fetchRandomPostsAPI(count);
                 handleCache().setCache({
-                    key: 'posts',
+                    key: 'feedPosts',
                     value: newPosts,
                     expiration: 3600
                 });

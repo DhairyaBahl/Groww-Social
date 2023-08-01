@@ -1,8 +1,8 @@
 import Image from "next/image"
-import styles from "@/styles/GridCard.module.css"
-import LikeButton from "@/components/LikeButton"
+import styles from "@/styles/molecules/GridCard.module.css"
+import LikeButton from "@/components/atoms/LikeButton"
 import { useState } from "react"
-import { handleLike } from "@/helpers"
+import { handleLike } from "@/handlers"
 
 export default function GridCard(props: any) {
     const [likes, setLikes] = useState<number>(props.post.likes)

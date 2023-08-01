@@ -1,9 +1,9 @@
-import styles from '@/styles/Header.module.css';
+import styles from '@/styles/molecules/Header.module.css';
 import Image from 'next/image'
 import SeedlingLogo from '@/assets/SeedlingLogo.png'
 import ProfileIcon from '@/assets/ProfileIcon.png'
 import Link from 'next/link';
-import ThemeSwitcher from './ThemeSwitcher';
+import ThemeSwitcher from '../atoms/ThemeSwitcher';
 
 export default function Header() {
     return (

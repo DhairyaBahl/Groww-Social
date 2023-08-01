@@ -1,10 +1,8 @@
 import '@/styles/globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import Header from '@/components/Header'
-import Main from '@/components/Main'
-
-const inter = Inter({ subsets: ['latin'] })
+import Header from '@/components/molecules/Header'
+import Main from '@/components/atoms/Main'
 
 export const metadata: Metadata = {
   title: 'Groww Social',

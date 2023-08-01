@@ -1,4 +1,4 @@
-import styles from '@/styles/SuggestedProfiles.module.css'
+import styles from '@/styles/atoms/SuggestedProfiles.module.css'
 import Image from 'next/image';
 import Link from 'next/link';
 

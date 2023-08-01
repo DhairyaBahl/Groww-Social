@@ -1,13 +1,13 @@
 'use client'
 
-import styles from "@/styles/UserPage.module.css"
+import styles from "@/styles/pages/UserPage.module.css"
 import Image from "next/image"
 import { useEffect, useState } from "react"
-import NewsFeedGrid from "@/components/NewsFeedGrid"
-import NewsFeed from '@/components/NewsFeed'
+import NewsFeedGrid from "@/components/molecules/NewsFeedGrid"
+import NewsFeed from '@/components/molecules/NewsFeed'
 import { fetchUserDataAPI } from "@/api"
-import { handleBio, handleCache } from "@/helpers"
-import Error from "@/components/Error"
+import { handleBio, handleCache } from "@/handlers"
+import Error from "@/components/atoms/Error"
 
 export default function UserPage({ params } : { params: { username: string } }) {
     const username = params.username
@@ -42,7 +42,7 @@ export default function UserPage({ params } : { params: { username: string } }) 
     }
 
     useEffect(() => { fetchUserData(username) }, [])
-
+    
     if(isLoading) return <div>Loading...</div>
     else if(errorMessage.length) return <Error message={errorMessage} />
     else if(!userData || Object.keys(userData).length === 0) return <Error message="User not found" />
@@ -57,7 +57,7 @@ export default function UserPage({ params } : { params: { username: string } }) 
                     height={100}
                     className={styles.up786userAvatar}
                     priority={true}
-                />
+                    />
                 <div className={styles.up786userDetailsWrapper}>
                     <div className={styles.up786userName}>@{username}</div>
                     <div className={styles.up786userDetails}>
@@ -82,11 +82,11 @@ export default function UserPage({ params } : { params: { username: string } }) 
                 <span 
                     className = {`${styles.up786format} ${isGrid && styles.up786formatEnabled}`}
                     onClick={() => setIsGrid(true)}
-                >Grid</span>
+                    >Grid</span>
                 <span 
                     className = {`${styles.up786format} ${!isGrid && styles.up786formatEnabled}`}
                     onClick={() => setIsGrid(false)}
-                >List</span>
+                    >List</span>
             </div>
             {isGrid && <NewsFeedGrid username = {username} />}
             {!isGrid && <NewsFeed username = {username} />}

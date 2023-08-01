@@ -1,11 +1,10 @@
 import Image from "next/image"
-import styles from "@/styles/PostCard.module.css"
+import styles from "@/styles/molecules/PostCard.module.css"
 import { useEffect, useRef, useState } from "react"
-import LikeButton from "@/components/LikeButton"
+import LikeButton from "@/components/atoms/LikeButton"
 import Link from "next/link";
-import { handleDate, handleLike } from "@/helpers";
-import useNextBlurHash from 'use-next-blurhash'
-import { Blurhash, BlurhashCanvas } from "react-blurhash";
+import { handleDate, handleLike } from "@/handlers";
+import { Blurhash } from "react-blurhash";
 
 export default function PostCard(props: any) {
     const {

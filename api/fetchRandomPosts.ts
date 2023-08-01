@@ -1,4 +1,4 @@
-import { handleError } from "@/helpers";
+import { handleError } from "@/handlers";
 
 export async function fetchRandomPostsAPI(count = 10) {
     const NEXT_PUBLIC_UNSPLASH_ACCESS_KEY = process.env.NEXT_PUBLIC_UNSPLASH_ACCESS_KEY
