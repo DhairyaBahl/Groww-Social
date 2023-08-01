@@ -26,7 +26,8 @@ export default function PostCard(props: PostCardProps) {
         user: { name, profile_image: { small }, username },
     } = props.post
 
-    const { isLast, onIntersect, isGrid, comments } = props
+    const { isLast, onIntersect, isGrid } = props
+    const comments = props?.comments || 0
 
     const ref = useRef(null);
     const [isLiked, setIsLiked] = useState(props?.post?.liked_by_user);
