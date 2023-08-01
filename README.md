@@ -1,34 +1,62 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Groww-Social Web Application
 
-## Getting Started
+Groww-Social is a web application designed to provide a social media experience with a focus on sharing photos. It allows users to view an infinite scrollable news feed of random photos, like and view details of each post, and explore user profiles with their uploaded images. The application is responsive for mobile devices and provides additional features such as like-on-double-click and dark/light mode. It also implements various optimizations such as lazy loading, Blurhash for image optimization, caching API responses, and converting the app to a Progressive Web App (PWA) for offline usage and easy installation.
 
-First, run the development server:
+## Features
+### News Feed Section
+Fetching Mechanism: The News Feed section fetches 10 random photos at a time, ensuring fresh content with each scroll.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+Infinite Scroll: Users can continuously scroll down the News Feed section to load more photos dynamically.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+isLiked Feature: Users can like posts, and the "isLiked" feature indicates whether the user has liked a particular post or not.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Show Total Likes: The total number of likes on each post is displayed to users.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Responsive for Mobile: The web application is designed to be responsive and accessible on various mobile devices.
 
-## Learn More
+Like on Double Click: Users can double-click on a post to like it, providing a convenient way to interact with content.
 
-To learn more about Next.js, take a look at the following resources:
+### Profile Section
+Redirection: When a user opens a profile page from the News Feed, they are redirected to the respective user's profile page.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Fetching User Details: User details, such as username, profile picture, and bio, are fetched and displayed on the profile page.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Fetching Uploaded Images: The application fetches and displays all the images uploaded by the user in the form of a grid.
 
-## Deploy on Vercel
+Image Click Event: When a user clicks on any image in the grid, the whole post is displayed on a new page.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Display Post Details: The new page shows the post's description, comments, and likes along with the image.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Brownie Points
+Lazy Loading: All images outside the viewport are lazily loaded, improving page loading performance.
+
+Blurhash for Optimization: The Blurhash technique is used to optimize image loading and enhance user experience.
+
+Dark/Light Mode: The application offers a toggle for dark/light mode, providing a personalized viewing experience.
+
+Cache API Response: API responses are cached in local storage for one hour, reducing server requests and serving fresh data.
+
+Cache TTL: A minimum cache time-to-live (TTL) is implemented to avoid serving stale data to users.
+
+### Additional
+Graceful Error Handling: The application handles various HTTP status codes, such as 403, 404, and 500, gracefully to ensure a smooth user experience.
+
+Progressive Web App (PWA): The web application is converted into a PWA, allowing users to install the app on their devices.
+
+### Technologies Used
+Frontend: JavaScript (TypeScript) and NextTS
+API: Unsplash API
+Styling: CSS Modules
+
+## Usage
+After running the development server and accessing the application in your browser, you can:
+
+Explore the News Feed: Scroll through the news feed to view random photos, like posts, and see the total number of likes on each post.
+
+View User Profiles: Click on a username in the news feed to be redirected to the respective user's profile page. On the profile page, you can view user details, uploaded images in a grid, and click on any image to see the whole post with its description, comments, and likes.
+
+Like-on-Double-Click: On the news feed, you can double-click on a post to like it instantly.
+
+Dark/Light Mode: Toggle between dark and light mode using the theme switcher to change the appearance of the application.
+
+Progressive Web App: If you are using a modern browser that supports PWAs, you can install the web application on your device.
